@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Init Server")
+	//Connect with server name
+	serverName := new(ServerNameProxy)
+	serverName.Host = "localhost"
+	serverName.Port = "9090"
+
+	trigonometryInvoker := new(TrigonometryInvoker)
+	trigonometryProxy := serverName.LookupTrigonometry("trigonometry")
+	fmt.Println("Init Invoker")
+	trigonometryInvoker.Invoke(trigonometryProxy)
+}
